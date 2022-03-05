@@ -1,0 +1,10 @@
+.chat {
+  padding-left: 34px;
+  padding-bottom: 200px;
+
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+
+  font-size: 32px;
+}
