@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import Chat from './chat'
@@ -17,6 +17,13 @@ function App() {
       setNewMessage('')
     }
   }, [newMessage, messages])
+
+  useEffect(() => {
+    const el = document.querySelector('.bubble.input > div')
+    if (el) {
+      el.focus()
+    }
+  }, [])
 
   return (
     <div className="App">
