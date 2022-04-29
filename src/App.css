@@ -3,5 +3,6 @@
   width: 1920px;
   height: 1080px;
   display: flex;
+  z-index: -99;
   flex-direction: column-reverse;
 }
