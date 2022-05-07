@@ -1,5 +1,4 @@
 import { useState, useCallback, useEffect } from 'react'
-import logo from './logo.svg'
 import './App.css'
 import Chat from './chat'
 import Bubble from './bubble'
