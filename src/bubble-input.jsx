@@ -1,8 +1,9 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, useRef, useEffect } from 'react'
 import './bubble-input.css'
 import ContentEditable from './content-editable'
 
 const BubbleInput = ({ onChange, onSubmit, value }) => {
+  const refEditable = useRef()
   const [submitted, setSubmitted] = useState(false)
 
   const handleChange = useCallback(
@@ -25,7 +26,15 @@ const BubbleInput = ({ onChange, onSubmit, value }) => {
     },
     [onSubmit]
   )
-  console.log('value:', value)
+  const handleBlur = useCallback(() => {
+    const { current: elDiv } = refEditable
+    if (elDiv) {
+      elDiv.focus()
+    }
+  }, [refEditable])
+
+  useEffect(() => handleBlur(), [handleBlur])
+
   return (
     <div
       className={`bubble input ${value.length === 0 ? 'empty' : ''} ${
@@ -33,8 +42,10 @@ const BubbleInput = ({ onChange, onSubmit, value }) => {
       }`}
     >
       <ContentEditable
+        ref={refEditable}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
+        onBlur={handleBlur}
         value={value}
       />
     </div>

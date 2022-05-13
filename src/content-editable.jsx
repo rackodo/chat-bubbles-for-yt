@@ -1,17 +1,14 @@
 import * as React from 'react'
 
 class ContentEditable extends React.Component {
-  constructor(props) {
-    super(props)
-    this.refElement = React.createRef()
-  }
   render() {
+    const { innerRef } = this.props
     return (
       <div
         key={Math.random()}
-        ref={this.refElement}
+        ref={innerRef}
         onInput={this.emitChange}
-        onBlur={this.emitChange}
+        onBlur={this.handleBlur}
         onKeyDown={this.emitKeyDown}
         contentEditable
         spellCheck="false"
@@ -21,12 +18,12 @@ class ContentEditable extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    const { current: div } = this.refElement
+    const { current: div } = this.props.innerRef
     return nextProps.value !== div.innerText
   }
 
   emitChange = () => {
-    const { current: div } = this.refElement
+    const { current: div } = this.props.innerRef
     var value = div.innerText
     if (this.props.onChange && value !== this.lastValue) {
       this.props.onChange({
@@ -42,6 +39,14 @@ class ContentEditable extends React.Component {
     const { onKeyDown } = this.props
     onKeyDown && onKeyDown(e)
   }
+
+  handleBlur = e => {
+    this.emitKeyDown(e)
+    const { onBlur } = this.props
+    onBlur && onBlur(e)
+  }
 }
 
-export default ContentEditable
+export default React.forwardRef((props, ref) => {
+  return <ContentEditable innerRef={ref} {...props} />
+})
