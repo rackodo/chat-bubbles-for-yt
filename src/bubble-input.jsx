@@ -6,7 +6,8 @@ const BubbleInput = ({ onChange, onSubmit, value }) => {
   const [submitted, setSubmitted] = useState(false)
 
   const handleKeyDown = e => {
-    if (e.key === 'Enter') {
+    const { isComposing } = e.nativeEvent
+    if (e.key === 'Enter' && !isComposing) {
       onSubmit && onSubmit()
       e.preventDefault()
       setSubmitted(true)
