@@ -3,19 +3,23 @@ import './bubble-input.css'
 
 const BubbleInput = ({ onChange, onSubmit, value }) => {
   const refEditable = useRef()
+  const refContainer = useRef()
   const [submitted, setSubmitted] = useState(false)
 
   const handleKeyDown = e => {
+    const { current: elContainer } = refContainer
+    const { current: elEditable } = refEditable
     const { isComposing } = e.nativeEvent
     if (e.key === 'Enter' && !isComposing) {
-      onSubmit && onSubmit()
+      const height = elContainer.clientHeight
+      onSubmit && onSubmit(height)
       e.preventDefault()
       setSubmitted(true)
-      setTimeout(() => {
-        refEditable.current.focus()
-        refEditable.current.innerText = ''
+      requestAnimationFrame(() => {
+        elEditable.focus()
+        elEditable.innerText = ''
         setSubmitted(false)
-      }, 10)
+      })
     }
   }
   const handleBlur = useCallback(() => {
@@ -29,16 +33,21 @@ const BubbleInput = ({ onChange, onSubmit, value }) => {
 
   return (
     <div
-      ref={refEditable}
-      className={`bubble input ${value.length === 0 ? 'empty' : ''} ${
+      ref={refContainer}
+      className={`bubble input  ${value.length === 0 ? 'empty' : ''} ${
         submitted ? 'submitted' : ''
       }`}
-      contentEditable
-      spellCheck="false"
-      onBlur={handleBlur}
-      onKeyDown={handleKeyDown}
-      onInput={e => onChange(e.target.innerText)}
-    />
+    >
+      <div
+        ref={refEditable}
+        className="bubble-content"
+        contentEditable
+        spellCheck="false"
+        onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
+        onInput={e => onChange(e.target.innerText)}
+      />
+    </div>
   )
 }
 

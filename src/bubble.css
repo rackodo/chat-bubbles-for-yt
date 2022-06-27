@@ -1,20 +1,25 @@
 .bubble {
+  max-width: 600px;
+}
+
+.bubble-content {
+  max-width: 600px;
+  display: inline-block;
   border-radius: 30px;
   padding: 12px 20px;
   margin-top: 5px;
   margin-bottom: 5px;
-  display: inline-block;
-  max-width: 600px;
+  hyphens: auto;
 }
 
-.bubble {
+.bubble-content {
   margin-right: 25%;
   background-color: #eee;
   position: relative;
 }
 
-.bubble:last-child:before,
-.bubble:nth-last-child(2):before {
+.bubble:last-child .bubble-content:before,
+.bubble:nth-last-child(2) .bubble-content:before {
   content: '';
   position: absolute;
   z-index: 0;
@@ -26,8 +31,8 @@
   border-bottom-right-radius: 20px;
 }
 
-.bubble:last-child:after,
-.bubble:nth-last-child(2):after {
+.bubble:last-child .bubble-content:after,
+.bubble:nth-last-child(2) .bubble-content:after {
   content: '';
   position: absolute;
   z-index: 1;
