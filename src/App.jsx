@@ -27,10 +27,10 @@ function App() {
     [newMessage, messages]
   )
 
-	const handleColourChange = (color) => {
-		setColour(color.hex);
-		console.log(color);
-	};
+  const handleColourChange = (color) => {
+    setColour(color.hex);
+      console.log(color);
+  };
 
   const lastMessage = messages[messages.length - 1]
   const dy = lastMessage ? lastMessage.height : 0
@@ -49,11 +49,11 @@ function App() {
           value={newMessage}
           onChange={setNewMessage}
           onSubmit={handleSubmit}
-		  colourClass={colour}
+          colourClass={colour}
         />
       </Chat>
-	  
-	  <SketchPicker className="picker" color={colour} onChange={handleColourChange}/>
+      
+      <SketchPicker className="picker" color={colour} onChange={handleColourChange}/>
     </div>
   )
 }
