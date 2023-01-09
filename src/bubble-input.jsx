@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useRef, useEffect } from 'react'
 import './bubble-input.css'
 
-const BubbleInput = ({ onChange, onSubmit, value }) => {
+const BubbleInput = ({ onChange, onSubmit, value, colourClass }) => {
   const refEditable = useRef()
   const refContainer = useRef()
   const [submitted, setSubmitted] = useState(false)
@@ -42,6 +42,7 @@ const BubbleInput = ({ onChange, onSubmit, value }) => {
         ref={refEditable}
         className="bubble-content"
         contentEditable
+		style={{backgroundColor: colourClass}}
         spellCheck="false"
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}

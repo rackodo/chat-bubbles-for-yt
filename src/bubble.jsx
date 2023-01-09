@@ -11,7 +11,7 @@ const transition = {
   }
 }
 
-const Bubble = ({ id, children, sender, dy }) => {
+const Bubble = ({ id, children, sender, dy, colourClass }) => {
   const [isPresent, safeToRemove] = usePresence()
 
   const animations = {
@@ -32,7 +32,7 @@ const Bubble = ({ id, children, sender, dy }) => {
 
   return (
     <motion.div key={id} className="bubble" {...animations}>
-      <div className="bubble-content">{children}</div>
+      <div className="bubble-content" style={{backgroundColor: colourClass}}>{children}</div>
     </motion.div>
   )
 }

@@ -26,7 +26,7 @@
   left: -12px;
   height: 26px;
   width: 30px;
-  background: #eee;
+  background: inherit;
   border-bottom-right-radius: 20px;
 }
 
