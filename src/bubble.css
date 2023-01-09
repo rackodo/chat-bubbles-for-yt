@@ -8,12 +8,14 @@
   border-radius: 30px;
   padding: 12px 20px;
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
+  display: inline-block;
+  max-width: 600px;
 }
 
 .bubble-content {
   margin-right: 25%;
-  background-color: #eee;
+  background-color: rgb(126, 203, 255);
   position: relative;
 }
 
@@ -21,7 +23,7 @@
 .bubble:nth-last-child(2) .bubble-content:before {
   content: '';
   position: absolute;
-  z-index: 0;
+  z-index: 50;
   bottom: 0;
   left: -12px;
   height: 26px;
@@ -34,11 +36,20 @@
 .bubble:nth-last-child(2) .bubble-content:after {
   content: '';
   position: absolute;
-  z-index: 1;
+  z-index: 100;
   bottom: 0;
   left: -15px;
   width: 15px;
   height: 27px;
   background: #00a000;
   border-bottom-right-radius: 15px;
+}
+
+.bubble  {
+  box-shadow: 10px 10px 0px rgb(65, 179, 255);
+}
+
+.bubble:last-child:before,
+.bubble:nth-last-child(2):before {
+  z-index: 75;
 }
