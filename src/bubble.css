@@ -45,10 +45,6 @@
   border-bottom-right-radius: 15px;
 }
 
-.bubble  {
-  box-shadow: 10px 10px 0px rgb(65, 179, 255);
-}
-
 .bubble:last-child:before,
 .bubble:nth-last-child(2):before {
   z-index: 75;
