@@ -11,7 +11,8 @@ import React from 'react'
 function App() {
   const [messages, addMessage] = useMessages([])
   const [newMessage, setNewMessage] = useState('')
-  const [colour, setColour] = useState('#f00')
+  const [fillColour, setFillColour] = useState('#eee')
+  const [strokeColour, setStrokeColour] = useState('#000')
 
   const handleSubmit = useCallback(
     bubbleHeight => {
@@ -27,8 +28,13 @@ function App() {
     [newMessage, messages]
   )
 
-  const handleColourChange = (color) => {
-    setColour(color.hex);
+  const handleFillColourChange = (color) => {
+    setFillColour(color.hex);
+      console.log(color);
+  };
+
+  const handleStrokeColourChange = (color) => {
+    setStrokeColour(color.hex);
       console.log(color);
   };
 
@@ -40,7 +46,7 @@ function App() {
       <Chat>
         <AnimatePresence>
           {messages.map(m => (
-            <Bubble key={m.id} id={m.id} dy={dy} colourClass={colour}>
+            <Bubble key={m.id} id={m.id} dy={dy} fillColour={fillColour} strokeColour={strokeColour}>
               {m.text}
             </Bubble>
           ))}
@@ -49,11 +55,17 @@ function App() {
           value={newMessage}
           onChange={setNewMessage}
           onSubmit={handleSubmit}
-          colourClass={colour}
+          fillColour={fillColour}
+          strokeColour={strokeColour}
         />
       </Chat>
       
-      <SketchPicker className="picker" color={colour} onChange={handleColourChange}/>
+      <div className="picker">
+		<p>Fill</p>
+        <SketchPicker color={fillColour} onChange={handleFillColourChange}/>
+		<p>Stroke</p>
+        <SketchPicker color={strokeColour} onChange={handleStrokeColourChange}/>
+      </div>
     </div>
   )
 }
