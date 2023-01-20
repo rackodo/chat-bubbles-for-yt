@@ -61,9 +61,9 @@ function App() {
       </Chat>
       
       <div className="picker">
-		<p>Fill</p>
+        <p>Fill</p>
         <SketchPicker color={fillColour} onChange={handleFillColourChange}/>
-		<p>Stroke</p>
+        <p>Stroke</p>
         <SketchPicker color={strokeColour} onChange={handleStrokeColourChange}/>
       </div>
     </div>

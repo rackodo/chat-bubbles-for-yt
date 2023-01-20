@@ -42,7 +42,7 @@ const BubbleInput = ({ onChange, onSubmit, value, fillColour, strokeColour }) =>
         ref={refEditable}
         className="bubble-content"
         contentEditable
-		style={{backgroundColor: fillColour, color: strokeColour}}
+        style={{backgroundColor: fillColour, color: strokeColour}}
         spellCheck="false"
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}
