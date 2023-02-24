@@ -15,7 +15,7 @@
 }
 
 .bubble.input > div {
-  background-color: #eee;
+  background-color: var(--bubble-background-color);
   font-size: 32px;
   min-width: 30px;
 }
