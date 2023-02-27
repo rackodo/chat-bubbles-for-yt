@@ -15,6 +15,7 @@
   margin-right: 25%;
   background-color: #eee;
   position: relative;
+  overflow-wrap: break-word;
 }
 
 .bubble:last-child .bubble-content:before,
