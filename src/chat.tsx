@@ -1,7 +1,7 @@
-import React from 'react'
+import { ReactNode } from 'react'
 import './chat.css'
 
-const Chat = ({ children }) => {
+const Chat = ({ children }: { children: ReactNode }) => {
   return <div className="chat">{children}</div>
 }
 
