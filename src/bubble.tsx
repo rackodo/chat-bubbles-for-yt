@@ -1,5 +1,5 @@
-import React from 'react'
 import { motion, usePresence } from 'framer-motion'
+import React from 'react'
 import './bubble.css'
 
 const transition = {
@@ -11,15 +11,20 @@ const transition = {
   }
 }
 
-const Bubble = ({ id, children, sender, dy, fillColour, strokeColour }) => {
+interface BubbleProps {
+  id: number
+  dy: number
+  children: React.ReactNode
+  fillColour: string
+  strokeColour: string
+}
+
+const Bubble = ({ id, children, dy, fillColour, strokeColour }: BubbleProps) => {
   const [isPresent, safeToRemove] = usePresence()
 
   const animations = {
     layout: true,
     initial: 'out',
-    style: {
-      position: 'static'
-    },
     animate: 'in',
     variants: {
       in: { opacity: 1, translateY: 0 },
@@ -32,7 +37,9 @@ const Bubble = ({ id, children, sender, dy, fillColour, strokeColour }) => {
 
   return (
     <motion.div key={id} className="bubble" {...animations}>
-      <div className="bubble-content" style={{backgroundColor: fillColour, color: strokeColour}}>{children}</div>
+      <div style={{ position: 'static' }}>
+        <div className="bubble-content" style={{backgroundColor: fillColour, color: strokeColour}}>{children}</div>
+      </div>
     </motion.div>
   )
 }
