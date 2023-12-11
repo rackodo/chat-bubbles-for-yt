@@ -11,11 +11,9 @@ interface BubbleInputProps {
   onChange: (value: string) => void
   onSubmit: (height: number) => void
   value: string
-  fillColour: string
-  strokeColour: string
 }
 
-const BubbleInput = ({ onChange, onSubmit, value, fillColour, strokeColour }: BubbleInputProps) => {
+const BubbleInput = ({ onChange, onSubmit, value }: BubbleInputProps) => {
   const refEditable = useRef<HTMLDivElement>(null)
   const refContainer = useRef<HTMLDivElement>(null)
   const [submitted, setSubmitted] = useState(false)
@@ -50,15 +48,13 @@ const BubbleInput = ({ onChange, onSubmit, value, fillColour, strokeColour }: Bu
   return (
     <div
       ref={refContainer}
-      className={`bubble input  ${value.length === 0 ? 'empty' : ''} ${
-        submitted ? 'submitted' : ''
-      }`}
+      className={`bubble input  ${value.length === 0 ? 'empty' : ''} ${submitted ? 'submitted' : ''
+        }`}
     >
       <div
         ref={refEditable}
         className="bubble-content"
         contentEditable
-        style={{backgroundColor: fillColour, color: strokeColour}}
         spellCheck="false"
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}

@@ -15,11 +15,9 @@ interface BubbleProps {
   id: number
   dy: number
   children: React.ReactNode
-  fillColour: string
-  strokeColour: string
 }
 
-const Bubble = ({ id, children, dy, fillColour, strokeColour }: BubbleProps) => {
+const Bubble = ({ id, children, dy, }: BubbleProps) => {
   const [isPresent, safeToRemove] = usePresence()
 
   const animations = {
@@ -38,7 +36,7 @@ const Bubble = ({ id, children, dy, fillColour, strokeColour }: BubbleProps) => 
   return (
     <motion.div key={id} className="bubble" {...animations}>
       <div style={{ position: 'static' }}>
-        <div className="bubble-content" style={{backgroundColor: fillColour, color: strokeColour}}>{children}</div>
+        <div className="bubble-content" >{children}</div>
       </div>
     </motion.div>
   )
