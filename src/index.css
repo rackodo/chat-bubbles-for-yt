@@ -1,7 +1,6 @@
 :root{
   --bubble-background-color: #eee;
   --bubble-color: #000;
-  --background-color: #00a000
 }
 
 html,
@@ -19,5 +18,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
+  background: url("https://i.pinimg.com/564x/34/9c/f1/349cf1ba173e14a3153a78037683333a.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center;
 }

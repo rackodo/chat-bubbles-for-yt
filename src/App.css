@@ -4,11 +4,5 @@
   display: flex;
   z-index: -99;
   flex-direction: column-reverse;
-  background-color: transparent;
 }
 
-.picker {
-  position: fixed!important;
-  top: 0;
-  right: 0;
-}

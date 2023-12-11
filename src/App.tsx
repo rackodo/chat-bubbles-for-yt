@@ -1,5 +1,5 @@
+import { React, useCallback, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
-import { useCallback, useState } from 'react'
 import './App.css'
 import Bubble from './bubble'
 import BubbleInput from './bubble-input'
@@ -24,7 +24,6 @@ function App() {
     [newMessage, messages]
   )
 
-
   const lastMessage = messages[messages.length - 1]
   const dy = lastMessage ? lastMessage.height : 0
 
@@ -33,7 +32,7 @@ function App() {
       <Chat>
         <AnimatePresence>
           {messages.map(m => (
-            <Bubble key={m.id} id={m.id} dy={dy} >
+            <Bubble key={m.id} id={m.id} dy={dy}>
               {m.text}
             </Bubble>
           ))}
@@ -44,7 +43,6 @@ function App() {
           onSubmit={handleSubmit}
         />
       </Chat>
-
     </div>
   )
 }
